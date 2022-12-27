@@ -1,3 +1,6 @@
+import math
+
+
 def add(numb_a: int, numb_b: int) -> int:
     return numb_a + numb_b
 
@@ -13,22 +16,41 @@ def div(numb_a: int, numb_b: int) -> float:
 def int_div(numb_a: int, numb_b: int) -> float:
     return numb_a // numb_b
 
+def check_int(numb_a: str, numb_b: str) -> int:
+    while not numb_a.isdigit():
+        numb_a = input('Enter number_a:\n')
+    numb_a = int(numb_a)
+
+    while not numb_b.isdigit():
+        numb_b = input('Enter number_b:\n')
+    numb_b = int(numb_b)
+    return numb_a, numb_b
+
 def main():
-    OPERATIONS = ('+', '-', '*', '/', '//')
+    OPERATIONS = ('+', '-', '*', '/', '//', 'pi')
 
     operation = input(f'Choose operation: {OPERATIONS}\n')
-    number_a, number_b = [int(input(f"Enter number {number}:\n")) for number in range(1, 3)]
+    while operation not in OPERATIONS:
+        operation = input(f'Choose operation: {OPERATIONS}\n')
 
-    if operation == '+':
-        print(add(number_a, number_b))
-    elif operation == '-':
-        print(sub(number_a, number_b))
-    elif operation == '*':
-        print(mult(number_a, number_b))
-    elif operation == '/':
-        print(div(number_a, number_b))
-    elif operation == '//':
-        print(int_div(number_a, number_b))
+    if operation == 'pi':
+        print(math.pi)
+    else:
+        # number_a, number_b = (input(f"Enter number {number}:\n") for number in range(1, 3))
+        number_a = input('Enter number_a:\n')
+        number_b = input('Enter number_b:\n')
+        int_numb_a, int_numb_b = check_int(number_a, number_b)
+
+        if operation == '+':
+            print(add(int_numb_a, int_numb_b))
+        elif operation == '-':
+            print(sub(int_numb_a, int_numb_b))
+        elif operation == '*':
+            print(mult(int_numb_a, int_numb_b))
+        elif operation == '/':
+            print(div(int_numb_a, int_numb_b))
+        elif operation == '//':
+            print(int_div(int_numb_a, int_numb_b))
 
 
 if __name__ == '__main__':
