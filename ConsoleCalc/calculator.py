@@ -33,24 +33,25 @@ def main():
     while operation not in OPERATIONS:
         operation = input(f'Choose operation: {OPERATIONS}\n')
 
-    if operation == 'pi':
-        print(math.pi)
-    else:
-        # number_a, number_b = (input(f"Enter number {number}:\n") for number in range(1, 3))
-        number_a = input('Enter number_a:\n')
-        number_b = input('Enter number_b:\n')
-        int_numb_a, int_numb_b = check_int(number_a, number_b)
+    match operation:
+        case 'pi':
+            print(math.pi)
+        case _:
+            number_a = input('Enter number_a:\n')
+            number_b = input('Enter number_b:\n')
+            int_numb_a, int_numb_b = check_int(number_a, number_b)
+            match operation:
+                case '+':
+                    print(add(int_numb_a, int_numb_b))
+                case '-':
+                    print(sub(int_numb_a, int_numb_b))
+                case '*':
+                    print(mult(int_numb_a, int_numb_b))
+                case '/':
+                    print(div(int_numb_a, int_numb_b))
+                case '//':
+                    print(int_div(int_numb_a, int_numb_b))
 
-        if operation == '+':
-            print(add(int_numb_a, int_numb_b))
-        elif operation == '-':
-            print(sub(int_numb_a, int_numb_b))
-        elif operation == '*':
-            print(mult(int_numb_a, int_numb_b))
-        elif operation == '/':
-            print(div(int_numb_a, int_numb_b))
-        elif operation == '//':
-            print(int_div(int_numb_a, int_numb_b))
 
 
 if __name__ == '__main__':
