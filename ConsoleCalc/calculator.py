@@ -1,20 +1,25 @@
 import math
 
 
-def add(numb_a: int, numb_b: int) -> int:
-    return numb_a + numb_b
+class Calculator:
 
-def sub(numb_a: int, numb_b: int) -> int:
-    return numb_a - numb_b
+    def add(self, numb_a: int, numb_b: int) -> int:
+        return numb_a + numb_b
 
-def mult(numb_a: int, numb_b: int) -> int:
-    return numb_a * numb_b
+    def sub(self, numb_a: int, numb_b: int) -> int:
+        return numb_a - numb_b
 
-def div(numb_a: int, numb_b: int) -> float:
-    return numb_a / numb_b
+    def mult(self, numb_a: int, numb_b: int) -> int:
+        return numb_a * numb_b
 
-def int_div(numb_a: int, numb_b: int) -> float:
-    return numb_a // numb_b
+    def div(self, numb_a: int, numb_b: int) -> float:
+        return numb_a / numb_b
+
+    def int_div(self, numb_a: int, numb_b: int) -> float:
+        return numb_a // numb_b
+
+    def pi(self):
+        return math.pi
 
 def check_int(numb_a: str, numb_b: str) -> int:
     while not numb_a.isdigit():
@@ -33,24 +38,26 @@ def main():
     while operation not in OPERATIONS:
         operation = input(f'Choose operation: {OPERATIONS}\n')
 
+    calculator = Calculator()
+
     match operation:
         case 'pi':
-            print(math.pi)
+            print(calculator.pi())
         case _:
             number_a = input('Enter number_a:\n')
             number_b = input('Enter number_b:\n')
             int_numb_a, int_numb_b = check_int(number_a, number_b)
             match operation:
                 case '+':
-                    print(add(int_numb_a, int_numb_b))
+                    print(calculator.add(int_numb_a, int_numb_b))
                 case '-':
-                    print(sub(int_numb_a, int_numb_b))
+                    print(calculator.sub(int_numb_a, int_numb_b))
                 case '*':
-                    print(mult(int_numb_a, int_numb_b))
+                    print(calculator.mult(int_numb_a, int_numb_b))
                 case '/':
-                    print(div(int_numb_a, int_numb_b))
+                    print(calculator.div(int_numb_a, int_numb_b))
                 case '//':
-                    print(int_div(int_numb_a, int_numb_b))
+                    print(calculator.int_div(int_numb_a, int_numb_b))
 
 
 
